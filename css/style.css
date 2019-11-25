@@ -1,0 +1,110 @@
+
+body {
+	background: -webkit-linear-gradient(left, rgb(220, 227, 91), rgb(69, 182, 73));
+	background: -o-linear-gradient(left, rgb(220, 227, 91), rgb(69, 182, 73));
+	background: linear-gradient(to right, rgb(220, 227, 91), rgb(69, 182, 73));
+	color: white;
+	background-size: cover;
+	-moz-background-size: cover;
+	-webkit-background-size: cover;
+	height: 100%;
+	width: 100%;
+}
+
+html {
+	height: 100%;
+}
+
+.rollbox::before{
+	top: 16rem;
+	left: -1em;
+	font-size: 0.3em;
+	position: absolute;
+	z-index: 2000;
+	content:"►";
+	color: red;
+}
+
+.rollbox {
+	font-size: 5em;
+	background: transparent;
+	margin-top: 150px;
+	height: 5em;
+	overflow: hidden;
+	/* clip: rect(0px,60px,200px,0px); */
+
+	position: relative;
+	padding: 0;
+	z-index: -100;
+}
+
+.rollbox > table {
+	width: auto;
+	height: 5em;
+	margin: 0;
+	padding: 0;
+}
+
+#loadout {
+	position: absolute;
+	z-index: 1;
+	width: 100%;
+}
+
+.roller {
+	position: relative;
+	display: block;
+	height: 1em;
+	color: black;
+	line-height: 2em;
+	font-size: 1em;
+	font-weight: bold;
+	font-family: sans-serif;
+	width: 100%;
+	margin-right: 10px;
+	vertical-align: middle;
+	overflow-x: visible;
+
+}
+
+.roller div {
+	display: block;
+	line-height: 100%;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	left: 0px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	/* background:-webkit-radial-gradient(white, black); */
+/* 	-webkit-box-shadow: inset 0px 0px 30px 25px rgba(0,0,0,0.45);
+	-moz-box-shadow: inset 0px 0px 30px 25px rgba(0,0,0,0.45);
+	box-shadow: inset 0px 0px 30px 10px rgba(0,0,0,0.45);
+	border: 1px solid black; */
+}
+
+.inputbox {
+	visibility: hidden;
+}
+
+#log {
+	margin-top: 30px;
+	text-align: center;
+	font-size: 1.5em;
+	color: white;
+}
+
+#log span {
+	font-size: 2em;
+	font-weight: bold;
+	color:#57B3F9;
+}
+
+#roll {
+	margin-top: 30px;
+}
+
+tr,table,td {
+	margin: 0;
+	padding: 0;
+}
