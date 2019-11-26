@@ -12,8 +12,8 @@
 .meter > span {
   display: block;
   height: 20px;
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
   background-color: rgb(43,194,83);
@@ -93,6 +93,16 @@
   background-color: #f0a3a3;
   background-image: linear-gradient(to bottom, #f0a3a3, #f42323);
 }
+
+.rainbow > span {
+  background: red;
+  background: -webkit-linear-gradient(left, red, orange, yellow, green, cyan, blue, violet);
+  background: -o-linear-gradient(left, red, orange, yellow, green, cyan, blue, violet);
+  background: linear-gradient(to right, red, orange, yellow, green, cyan, blue, violet);
+/*   background-image: -webkit-linear-gradient(#f0a3a3, #49ACB5);
+  background-image: -o-linear-gradient(#f0a3a3, #49ACB5);
+  background-image: linear-gradient(#f0a3a3, #49ACB5);
+ */}
 
 .nostripes > span > span, .nostripes > span:after {
 	-webkit-animation: none;

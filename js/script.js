@@ -2,9 +2,9 @@ $(document).ready(function() {
     var users = [],
         shuffled = [],
         loadout = $("#loadout"),
-        default_duration_time = 5000,
+        default_duration_time = 500,
         easing = ["easeOutCirc", "easeOutExpo", "easeOutBack", "easeOutElastic"],
-        maxLength = 300,
+        default_maxLength = 300,
         force = 0;
 
     $('textarea').val("1612000\n1612001\n1612002\n1612003\n1612004\n1612005\n1612006\n1612007\n1612008\n1612009\n1612010\n1612011\n1612012\n1612013\n1612014\n1612015\n1612016\n1612017\n1612018\n1612019\n1612020\n1612021\n1612022\n1612023\n1612024\n1612025\n1612026\n1612027\n1612028\n1612029\n1612030\n1612031\n1612032\n1612033\n1612034\n1612035\n1612036\n1612037\n1612038\n1612039\n1612040\n1612041\n1612042\n1612043\n1612044\n1612045\n1612046\n1612047\n1612048\n1612049\n1612050\n1612051\n1612052\n1612053\n1612054\n1612055\n1612056\n1612057\n1612058\n1612059\n1612060\n1612061\n1612062\n1612063\n1612064\n1612065\n1612066\n1612067\n1612068\n1612069\n1612070\n1612071\n1612072\n1612073\n1612074\n1612075\n1612076\n1612077\n1612078\n1612079\n1612080\n1612081\n1612082\n1612083\n1612084\n1612085\n1612086\n1612087\n1612088\n1612089\n1612090\n1612091\n1612092\n1612093\n1612094\n1612095\n1612096\n1612097\n1612098\n1612099")
@@ -22,7 +22,7 @@ $(document).ready(function() {
 
     $("#roll").click(function() {
         duration_time = default_duration_time + 3 * force* default_duration_time;
-        maxLength = maxLength + force* maxLength;
+        maxLength = default_maxLength + force* default_maxLength;
 
         if (force<0.25)
             ease = "easeOutCirc";
@@ -37,6 +37,10 @@ $(document).ready(function() {
         $("#roll").attr("disabled",true);
         var scrollsize = 0;
         $(loadout).html("");
+        // while ($(loadout).firstChild) {
+        //     $(loadout).firstChild.remove();
+        // }
+
         $("#log").html("");
         let shuffled = []
 
