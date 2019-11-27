@@ -6,7 +6,6 @@ function getSV1() {
 
 function getSV() {
     a = getSV1();
-    console.log("getSV() invoked");
     return a.map(x => ({
         value: x,
         text: x
