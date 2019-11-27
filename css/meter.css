@@ -95,14 +95,13 @@
 }
 
 .rainbow > span {
+  background-repeat: no-repeat;
   background: red;
-  background: -webkit-linear-gradient(left, red, orange, yellow, green, cyan, blue, violet);
-  background: -o-linear-gradient(left, red, orange, yellow, green, cyan, blue, violet);
-  background: linear-gradient(to right, red, orange, yellow, green, cyan, blue, violet);
-/*   background-image: -webkit-linear-gradient(#f0a3a3, #49ACB5);
-  background-image: -o-linear-gradient(#f0a3a3, #49ACB5);
-  background-image: linear-gradient(#f0a3a3, #49ACB5);
- */}
+  background: -webkit-linear-gradient(left, green, green, green, yellow, orange, red, red, red);
+  background: -o-linear-gradient(left, green, green, green, yellow, orange, red, red, red);
+  background: linear-gradient(to right, green, green, green, yellow, orange, red, red, red);
+  background-attachment: fixed;
+}
 
 .nostripes > span > span, .nostripes > span:after {
 	-webkit-animation: none;

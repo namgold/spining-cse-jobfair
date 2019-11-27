@@ -1,8 +1,7 @@
-
 body {
-	background: -webkit-linear-gradient(left, rgb(220, 227, 91), rgb(69, 182, 73));
-	background: -o-linear-gradient(left, rgb(220, 227, 91), rgb(69, 182, 73));
-	background: linear-gradient(to right, rgb(220, 227, 91), rgb(69, 182, 73));
+	background: linear-gradient(to right, #FDFC47, #24FE41);
+	background: linear-gradient(to right, #cb2d3e, #ef473a);
+	/* background: linear-gradient(to right, #74ebd5, #acb6e5); */
 	color: white;
 	background-size: cover;
 	-moz-background-size: cover;
@@ -15,24 +14,46 @@ html {
 	height: 100%;
 }
 
-.rollbox::before{
-	top: 16rem;
-	left: -1em;
-	font-size: 0.3em;
+.rollbox::before {
+	top: 14rem;
+	font-size: 0.7em;
 	position: absolute;
 	z-index: 2000;
 	content:"►";
 	color: red;
+	text-shadow: 1px 1px 0 #000,
+		-1px 1px 0 #000,
+		1px -1px 0 #000,
+		-1px -1px 0 #000,
+		0px 1px 0 #000,
+		0px -1px 0 #000,
+		-1px 0px 0 #000,
+		1px 0px 0 #000,
+		2px 2px 0 #000,
+		-2px 2px 0 #000,
+		2px -2px 0 #000,
+		-2px -2px 0 #000,
+		0px 2px 0 #000,
+		0px -2px 0 #000,
+		-2px 0px 0 #000,
+		2px 0px 0 #000,
+		1px 2px 0 #000,
+		-1px 2px 0 #000,
+		1px -2px 0 #000,
+		-1px -2px 0 #000,
+		2px 1px 0 #000,
+		-2px 1px 0 #000,
+		2px -1px 0 #000,
+		-2px -1px 0 #000;
 }
 
 .rollbox {
 	font-size: 5em;
 	background: transparent;
-	margin-top: 150px;
+	margin-top: 4.5em;
 	height: 5em;
 	overflow: hidden;
 	/* clip: rect(0px,60px,200px,0px); */
-
 	position: relative;
 	padding: 0;
 	z-index: -100;
@@ -42,6 +63,7 @@ html {
 	width: auto;
 	height: 5em;
 	margin: 0;
+	margin-left: 0.5em;
 	padding: 0;
 }
 
@@ -64,7 +86,7 @@ html {
 	margin-right: 10px;
 	vertical-align: middle;
 	overflow-x: visible;
-
+	/* text-align: center; */
 }
 
 .roller div {
@@ -79,8 +101,8 @@ html {
 	/* background:-webkit-radial-gradient(white, black); */
 /* 	-webkit-box-shadow: inset 0px 0px 30px 25px rgba(0,0,0,0.45);
 	-moz-box-shadow: inset 0px 0px 30px 25px rgba(0,0,0,0.45);
-	box-shadow: inset 0px 0px 30px 10px rgba(0,0,0,0.45);
-	border: 1px solid black; */
+	box-shadow: inset 0px 0px 30px 10px rgba(0,0,0,0.45);*/
+/*	border: 1px solid black; */
 }
 
 .inputbox {
@@ -108,3 +130,35 @@ tr,table,td {
 	margin: 0;
 	padding: 0;
 }
+
+h1 {
+	font-size: 3.5em;
+	font-weight: bold;
+	text-shadow: 1px 1px 0 #000,
+		-1px 1px 0 #000,
+		1px -1px 0 #000,
+		-1px -1px 0 #000,
+		0px 1px 0 #000,
+		0px -1px 0 #000,
+		-1px 0px 0 #000,
+		1px 0px 0 #000,
+		2px 2px 0 #000,
+		-2px 2px 0 #000,
+		2px -2px 0 #000,
+		-2px -2px 0 #000,
+		0px 2px 0 #000,
+		0px -2px 0 #000,
+		-2px 0px 0 #000,
+		2px 0px 0 #000,
+		1px 2px 0 #000,
+		-1px 2px 0 #000,
+		1px -2px 0 #000,
+		-1px -2px 0 #000,
+		2px 1px 0 #000,
+		-2px 1px 0 #000,
+		2px -1px 0 #000,
+		-2px -1px 0 #000;
+	margin-bottom: 0px;
+	margin-top:10px;
+}
+
