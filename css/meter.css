@@ -7,6 +7,7 @@
 	border-radius: 25px;
 	padding: 10px;
 	box-shadow: inset 0 -1px 1px rgba(255,255,255,0.3);
+	margin-top: 30px;
 }
 
 .meter > span {
@@ -95,6 +96,14 @@
 }
 
 .rainbow > span {
+  background-repeat: no-repeat;
+  background: red;
+  background: -webkit-linear-gradient(left, red, orange, yellow, green, blue, indigo, violet);
+  background: -o-linear-gradient(left, red, orange, yellow, green, blue, indigo, violet);
+  background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+}
+
+.power-color > span {
   background-repeat: no-repeat;
   background: red;
   background: -webkit-linear-gradient(left, green, green, green, yellow, orange, red, red, red);
