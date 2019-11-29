@@ -2,6 +2,9 @@ const easing = {
   easeOutCubic: function(pos) {
     return (Math.pow((pos-1), 3) +1);
   },
+  linear: function(pos) {
+    return pos;
+  },
   easeOutQuart: function(pos) {
     return -(Math.pow((pos-1), 4) -1);
   },
@@ -21,7 +24,6 @@ const easing = {
     var s = 1.70158;
     return 1*((t=t/1-1)*t*((s+1)*t + s) + 1);
   },
-
 };
 
 class IosSelector {
@@ -117,9 +119,8 @@ class IosSelector {
   _touchmove(e, touchData) {
     let eventY = e.clientY || e.touches[0].clientY;
     touchData.yArr.push([eventY, new Date().getTime()]);
-    if (touchData.length > 5) {
+    if (touchData.length > 5)
       touchData.unshift();
-    }
 
     let scrollAdd = (touchData.startY - eventY) / this.itemHeight;
     let moveToScroll = scrollAdd + this.scroll;
@@ -140,15 +141,14 @@ class IosSelector {
   }
 
   _touchend(e, touchData) {
-    // console.log(e);
     this.elems.el.removeEventListener('touchmove', this.events.touchmove);
     document.removeEventListener('mousemove', this.events.touchmove);
 
     let v;
 
-    if (touchData.yArr.length === 1) {
+    if (touchData.yArr.length === 1)
       v = 0;
-    } else {
+    else {
       let startTime = touchData.yArr[touchData.yArr.length - 2][1];
       let endTime = touchData.yArr[touchData.yArr.length - 1][1];
       let startY = touchData.yArr[touchData.yArr.length - 2][0];
@@ -169,9 +169,8 @@ class IosSelector {
 
   _create(source) {
 
-    if (!source.length) {
+    if (!source.length)
       return;
-    }
 
     let template = `
       <div class="select-wrap">
@@ -215,15 +214,12 @@ class IosSelector {
 
     // 中间高亮 HTML
     let highListHTML = '';
-    for (let i = 0; i < source.length; i++) {
+    for (let i = 0; i < source.length; i++)
       highListHTML += `<li class="highlight-item" style="height: ${this.itemHeight}px;">
                         ${source[i].text}
                       </li>`
-    }
-
 
     if (this.options.type === 'infinite') {
-
       // 圆环头尾
       for (let i = 0; i < this.quarterCount; i++) {
         // 头
@@ -247,7 +243,6 @@ class IosSelector {
                       data-index="${i + sourceLength}"
                       >${source[i].text}</li>`;
       }
-
       // 高亮头尾
       highListHTML = `<li class="highlight-item" style="height: ${this.itemHeight}px;">
                           ${source[sourceLength - 1].text}
@@ -266,20 +261,13 @@ class IosSelector {
     this.elems.highlightList = this.elems.el.querySelector('.highlight-list');
     this.elems.highlightitems = this.elems.el.querySelectorAll('.highlight-item');
 
-    if (this.type === 'infinite') {
+    if (this.type === 'infinite')
       this.elems.highlightList.style.top = -this.itemHeight + 'px';
-    }
 
     this.elems.highlight.style.height = this.itemHeight + 'px';
     this.elems.highlight.style.lineHeight = this.itemHeight + 'px';
   }
 
-  /**
-   * 对 scroll 取模，eg source.length = 5 scroll = 6.1 
-   * 取模之后 normalizedScroll = 1.1
-   * @param {init} scroll 
-   * @return 取模之后的 normalizedScroll
-   */
   _normalizeScroll(scroll) {
     let normalizedScroll = scroll;
 
@@ -290,11 +278,6 @@ class IosSelector {
     return normalizedScroll;
   }
 
-  /**
-   * 定位到 scroll，无动画
-   * @param {init} scroll 
-   * @return 返回指定 normalize 之后的 scroll
-   */
   _moveTo(scroll) {
     if (this.type === 'infinite') {
       scroll = this._normalizeScroll(scroll);
@@ -303,11 +286,10 @@ class IosSelector {
     this.elems.highlightList.style.transform = `translate3d(0, ${-(scroll) * this.itemHeight}px, 0)`;
 
     [...this.elems.circleItems].forEach(itemElem => {
-      if (Math.abs(itemElem.dataset.index - scroll) > this.quarterCount) {
+      if (Math.abs(itemElem.dataset.index - scroll) > this.quarterCount)
         itemElem.style.visibility = 'hidden';
-      } else {
+      else
         itemElem.style.visibility = 'visible';
-      }
     });
 
     // console.log(scroll);
@@ -315,11 +297,6 @@ class IosSelector {
     return scroll;
   }
 
-  /**
-   * 以初速度 initV 滚动
-   * @param {init} initV， initV 会被重置
-   * 以根据加速度确保滚动到整数 scroll (保证能通过 scroll 定位到一个选中值)
-   */
   async _animateMoveByInitV(initV) {
 
     // console.log(initV);
@@ -423,7 +400,6 @@ class IosSelector {
 
   updateSource(source) {
     this._create(source);
-
     if (!this.moving) {
       this._selectByScroll(this.scroll);
     }

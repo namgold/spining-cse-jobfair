@@ -1,17 +1,25 @@
 body {
-	background: linear-gradient(to right, #FDFC47, #24FE41);
-/* 	background: linear-gradient(to right, #24FE41, #FDFC47);
+	background: linear-gradient(to right, #24FE41, #FDFC47);
 	background: linear-gradient(to right, #cb2d3e, #ef473a);
 	background: linear-gradient(to right, #74ebd5, #acb6e5);
 	background: linear-gradient(to right, #5433FF, #20BDFF, #A5FECB);
 	background: linear-gradient(to right, #ee9ca7, #ffdde1);
 	background: linear-gradient(to right, #12c2e9, #c471ed, #f64f59);
- */	color: white;
+	background: linear-gradient(to right, #FDFC47, #24FE41);
+	color: white;
 	background-size: cover;
 	-moz-background-size: cover;
 	-webkit-background-size: cover;
 	height: 100%;
 	width: 100%;
+}
+
+canvas {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
 }
 
 html {

@@ -6,7 +6,7 @@ function getSV1() {
 
 function getSV() {
     a = getSV1();
-    blacklist = ["1512793", "1513404", "1610107", "1610372", "1611046", "1611712", "1612115", "1614189", "1710094", "1710165", "1711265", "1711680", "1711947", "1712025", "1712393", "1712692", "1712727", "1713148", "1713214", "1713417", "1713669", "1714054", "1810014", "1810299", "1810814", "1810885", "1811669", "1811828", "1812164", "1812778", "1814446", "1814454", "1813159", "1813952", "1813636", "1911262", "1910637", "1913332", "1913102", "1910351", "1915144", "1911437", "1915121", "1710539", "1913678", "1912791", "1910364", "1911285", "1814041", "1914691", "1713743", "1912190", "1811553", "1916022", "1812593", "1812064", "1913774", "1811912", "1712160", "1812502", "1810086", "1810344", "1814182", "1810075", "1710710", "1812227", "1813373", "1814149"]
+    blacklist = ["1512793", "1915144", "1612604", "1513404", "1610107", "1610372", "1611046", "1611712", "1612115", "1614189", "1710094", "1710165", "1711265", "1711680", "1711947", "1712025", "1712393", "1712692", "1712727", "1713148", "1713214", "1713417", "1713669", "1714054", "1810014", "1810299", "1810814", "1810885", "1811669", "1811828", "1812164", "1812778", "1814446", "1814454", "1813159", "1813952", "1813636", "1911262", "1910637", "1913332", "1913102", "1910351", "1915144", "1911437", "1915121", "1710539", "1913678", "1912791", "1910364", "1911285", "1814041", "1914691", "1713743", "1912190", "1811553", "1916022", "1812593", "1812064", "1913774", "1811912", "1712160", "1812502", "1810086", "1810344", "1814182", "1810075", "1710710", "1812227", "1813373", "1814149"]
     filtered = a.filter(x => !blacklist.includes(x.substring(0,7)))
     return filtered.map(x => ({
         value: x,
@@ -25,7 +25,6 @@ jQuery.extend( jQuery.easing, {
 var users = getSV(),
     loadout = $("#loadout"),
     shuffled = [],
-    default_duration_time = 20000,
     easingNames = [
         "easeOutCirc",
         "easeOutCirc",
@@ -40,7 +39,7 @@ var users = getSV(),
     ],
     default_maxLength = 1000,
     maxLength = 1000,
-    force = 0;
+    force = 0.1;
 
 $(document).ready(function() {
 
@@ -48,21 +47,30 @@ $(document).ready(function() {
         change: function(_force, event) {
             $("#power-bar > span").width(_force*100 + "%");
             force = _force;
+            fireworkStop();
         }
     });
 
-    $("#roll").click(function() {
-        var duration_time = default_duration_time * ( 0.3 + force * force * 0.7);
+    var roll = function(isInit = false) {
+        var _force = 1;
         var ease = "easeOutBack";
-        if (force < 0.25)
+
+        if (isInit == "true") {
+            _force = 0.02;
             ease = "easeOutCirc";
-        else if (force == 1)
-            ease = "easeOutElasticS";
-        else 
-            ease = easingNames[Math.floor(Math.random() * easingNames.length)];
-        console.log("ease:",ease)
+        }
+        else {
+            if (force < 0.25)
+                ease = "easeOutCirc";
+            else if (force == 1)
+                ease = "easeOutElasticS";
+            else 
+                ease = easingNames[Math.floor(Math.random() * easingNames.length)];
+            _force =  0.4 + force * force * 0.6;
+        }
+
         $("#roll").attr("disabled",true);
-        let shuffled = []
+        let shuffled = [];
 
         for(; shuffled.length < maxLength;) {
             tempUser = users;
@@ -85,14 +93,20 @@ $(document).ready(function() {
             count: 18,
         });
 
-        var winner = Math.floor(force * maxLength)-1;
+        var winner = Math.floor(_force * maxLength) - 1;
         console.log(shuffled[winner].value)
         setTimeout(function() {
             svSelector.select(shuffled[winner].value, ease, ()=>{
                 $("#roll").attr("disabled",false);
+                if (isInit != "true") {
+                    fireworkStart();
+                    setTimeout(fireworkStop, 5000);
+                }
             });
         });
-    });
+    };
+
+    $("#roll").click(roll);
 
     Array.prototype.shuffle = function() {
         var counter = this.length, temp, index;
@@ -104,4 +118,5 @@ $(document).ready(function() {
         }
     }
 
+    roll("true");
 });
